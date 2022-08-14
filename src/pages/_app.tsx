@@ -59,25 +59,33 @@ const App = (props: ExtendedAppProps) => {
   const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
 
   return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <title>{`${themeConfig.templateName} - Dashboard`}</title>
-        <meta
-          name='description'
-          content={`${themeConfig.templateName} – Pristine Dashboard`}
-        />
-        <meta name='keywords' content='Pristine Dashboard' />
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
-      </Head>
+    <>
+      <CacheProvider value={emotionCache}>
+        <Head>
+          <title>{`${themeConfig.templateName} - Dashboard`}</title>
+          <meta
+            name='description'
+            content={`${themeConfig.templateName} – Pristine Dashboard`}
+          />
+          <meta name='keywords' content='Pristine Dashboard' />
+          <meta name='viewport' content='initial-scale=1, width=device-width' />
+        </Head>
 
-      <SettingsProvider>
-        <SettingsConsumer>
-          {({ settings }) => {
-            return <ThemeComponent settings={settings}>{getLayout(<Component {...pageProps} />)}</ThemeComponent>
-          }}
-        </SettingsConsumer>
-      </SettingsProvider>
-    </CacheProvider>
+        <SettingsProvider>
+          <SettingsConsumer>
+            {({ settings }) => {
+              return <ThemeComponent settings={settings}>{getLayout(jsxComponent(Component, pageProps))}</ThemeComponent>
+            }}
+          </SettingsConsumer>
+        </SettingsProvider>
+      </CacheProvider>
+    </>
+  )
+}
+
+const jsxComponent = (Component: any, pageProps: any) => {
+  return (
+    <><Component {...pageProps} /></>
   )
 }
 
