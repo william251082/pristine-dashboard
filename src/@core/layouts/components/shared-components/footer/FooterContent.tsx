@@ -21,7 +21,7 @@ const FooterContent = () => {
           ❤️
         </Box>
         {` by `}
-        <Link target='_blank' onClick={() => clinkHandler()}>
+        <Link target='_blank' href='https://pristine-app.com/'>
           PRISTINE
         </Link>
       </Typography>
