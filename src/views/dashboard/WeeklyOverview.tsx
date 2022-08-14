@@ -16,8 +16,6 @@ import { ApexOptions } from 'apexcharts'
 
 // ** Custom Components Imports
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
-import {FC} from "react";
-import dynamic from "next/dynamic";
 
 const WeeklyOverview = () => {
   // ** Hook
